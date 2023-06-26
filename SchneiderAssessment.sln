@@ -12,9 +12,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{18242CF7-0598-449E-AF0B-BED4782F3AEB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{AFC98864-5640-46A7-AE82-4DAB3295B106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.API", "src\Services\HR.API\HR.API.csproj", "{2030E611-D722-403C-BAB6-36A60317D408}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2030E611-D722-403C-BAB6-36A60317D408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2030E611-D722-403C-BAB6-36A60317D408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2030E611-D722-403C-BAB6-36A60317D408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2030E611-D722-403C-BAB6-36A60317D408}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AFC98864-5640-46A7-AE82-4DAB3295B106} = {18242CF7-0598-449E-AF0B-BED4782F3AEB}
+		{2030E611-D722-403C-BAB6-36A60317D408} = {AFC98864-5640-46A7-AE82-4DAB3295B106}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7DD3FDBA-7222-4B5A-B40A-F5BE0ED7E417}
