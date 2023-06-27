@@ -42,6 +42,7 @@ public sealed class VacationRequestsController : ControllerBase
     public async Task<IActionResult> CreateNewVacationRequest(CreateVacationRequestDTO request, CancellationToken ct)
     {
         var result = await _mediator.Send(new CreateVacationRequestCommand(request), ct);
-        return CreatedAtAction(nameof(GetVacationRequestById), new { id = result.ID }, result);
+        return result is not null ? CreatedAtAction(nameof(GetVacationRequestById), new { id = result.ID }, result)
+            : BadRequest();
     }
 }
