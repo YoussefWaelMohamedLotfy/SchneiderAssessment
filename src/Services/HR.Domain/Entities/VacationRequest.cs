@@ -8,7 +8,7 @@ public sealed class VacationRequest : BaseEntity<Guid>
 
     public DateTimeOffset EndDate { get; set; }
 
-    public int RequestingEmployeeId { get; set; }
+    public Guid RequestingEmployeeId { get; set; }
 
     public Employee RequestingEmployee { get; set; } = default!;
 
