@@ -10,7 +10,7 @@ namespace HR.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class VacationRequestsController : ControllerBase
+public sealed class VacationRequestsController : ControllerBase
 {
     private readonly IMediator _mediator;
 
