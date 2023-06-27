@@ -21,8 +21,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MigrateDatabase<AppDbContext>((_, _) => { }
-        /*=> context.Seed(services.GetRequiredService<ILogger<AppDbContext>>())*/);
+    app.MigrateDatabase<AppDbContext>((context, services)
+        => context.Seed(services.GetRequiredService<ILogger<AppDbContext>>()));
 
     app.UseSwagger();
     app.UseSwaggerUI();
