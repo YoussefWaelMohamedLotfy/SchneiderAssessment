@@ -19,6 +19,12 @@ public class VacationRequestsController : ControllerBase
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Gets a single Vacation Request by ID
+    /// </summary>
+    /// <param name="id">Unique Identifier of Vacation Request</param>
+    /// <param name="ct"></param>
+    /// <returns>The requested Vacation Request</returns>
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetVacationRequestById(Guid id, CancellationToken ct)
     {
@@ -26,6 +32,12 @@ public class VacationRequestsController : ControllerBase
         return result is not null ? Ok(result) : NotFound();
     }
 
+    /// <summary>
+    /// Creates a new Vacation Request for an Employee
+    /// </summary>
+    /// <param name="request">New Vacation Request Body</param>
+    /// <param name="ct"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> CreateNewVacationRequest(CreateVacationRequestDTO request, CancellationToken ct)
     {

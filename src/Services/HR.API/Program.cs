@@ -1,3 +1,5 @@
+using System.Reflection;
+
 using HR.API.Extensions;
 using HR.Application;
 using HR.Persistence.Data;
@@ -14,7 +16,12 @@ builder.Services.RegisterApplicationServices();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(o =>
+{
+    string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    o.IncludeXmlComments(xmlPath);
+});
 
 var app = builder.Build();
 
