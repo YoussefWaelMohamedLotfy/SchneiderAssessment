@@ -15,8 +15,4 @@
     <ProjectReference Include="..\HR.Persistence\HR.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\VacationRequestFeatures\Queries\" />
-  </ItemGroup>
-
 </Project>

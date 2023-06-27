@@ -1,4 +1,5 @@
 using HR.Application.Features.VacationRequestFeatures.Commands;
+using HR.Application.Features.VacationRequestFeatures.Queries;
 using HR.Contracts.VacationRequestContracts;
 
 using MediatR;
@@ -21,8 +22,8 @@ public class VacationRequestsController : ControllerBase
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetVacationRequestById(Guid id, CancellationToken ct)
     {
-        var result = await _mediator.Send(id, ct);
-        return Ok(result);
+        var result = await _mediator.Send(new GetVacationRequestByIdQuery(id), ct);
+        return result is not null ? Ok(result) : NotFound();
     }
 
     [HttpPost]
