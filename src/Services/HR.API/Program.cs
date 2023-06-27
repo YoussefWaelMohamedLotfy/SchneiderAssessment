@@ -1,3 +1,4 @@
+using HR.API.Extensions;
 using HR.Application;
 using HR.Persistence.Data;
 
@@ -20,6 +21,9 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.MigrateDatabase<AppDbContext>((_, _) => { }
+        /*=> context.Seed(services.GetRequiredService<ILogger<AppDbContext>>())*/);
+
     app.UseSwagger();
     app.UseSwaggerUI();
 }
