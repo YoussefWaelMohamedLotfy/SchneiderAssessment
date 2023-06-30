@@ -1,4 +1,7 @@
-﻿using HR.Contracts.VacationRequestContracts;
+﻿using FluentValidation;
+
+using HR.Application.Extensions;
+using HR.Contracts.VacationRequestContracts;
 using HR.Domain.Entities;
 using HR.Persistence.Data;
 
@@ -7,6 +10,27 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace HR.Application.Features.VacationRequestFeatures.Commands;
+
+public sealed record CreateVacationRequestCommand(CreateVacationRequestDTO VacationRequestInput)
+    : IValidatableRequest<GetVacationRequestDTO?>;
+
+public sealed class CreateVacationRequestCommandValidator : AbstractValidator<CreateVacationRequestCommand>
+{
+    public CreateVacationRequestCommandValidator()
+    {
+        RuleFor(x => x.VacationRequestInput.VacationTypeId)
+            .GreaterThan(0)
+            .WithMessage("VacationTypeId must be greater than 0");
+
+        RuleFor(x => x.VacationRequestInput.EndDate)
+            .GreaterThanOrEqualTo(x => x.VacationRequestInput.StartDate)
+            .WithMessage("End Date should be greater than Start Date");
+
+        RuleFor(x => x.VacationRequestInput.StartDate)
+            .LessThanOrEqualTo(x => x.VacationRequestInput.EndDate)
+            .WithMessage("Start Date should be less than End Date");
+    }
+}
 
 internal sealed class CreateVacationRequestCommandHandler : IRequestHandler<CreateVacationRequestCommand, GetVacationRequestDTO?>
 {

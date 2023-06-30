@@ -1,6 +1,7 @@
 using System.Reflection;
 
 using HR.API.Extensions;
+using HR.API.Middlewares;
 using HR.Application;
 using HR.Persistence.Data;
 
@@ -38,6 +39,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ValidationMappingMiddleware>();
 
 app.MapControllers();
 
