@@ -24,7 +24,7 @@ public sealed class EmployeesController : ControllerBase
     /// <param name="ct"></param>
     /// <returns></returns>
     [HttpGet("{id:guid}")]
-    public async Task<IActionResult> GetAllVacationTypes(Guid id, CancellationToken ct)
+    public async Task<IActionResult> GetEmployeeById(Guid id, CancellationToken ct)
     {
         var result = await _mediator.Send(new GetEmployeeByIdQuery(id), ct);
         return result is not null ? Ok(result) : NotFound();
