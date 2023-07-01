@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
 	EndProjectSection
@@ -17,6 +18,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{AFC98864-5640-46A7-AE82-4DAB3295B106}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.API", "src\Services\HR.API\HR.API.csproj", "{2030E611-D722-403C-BAB6-36A60317D408}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Domain", "src\Services\HR.Domain\HR.Domain.csproj", "{76BAB36F-56C4-4C80-8490-1807247647CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Persistence", "src\Services\HR.Persistence\HR.Persistence.csproj", "{CEACA671-009D-42C9-96B5-E657EDAA9E9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Application", "src\Services\HR.Application\HR.Application.csproj", "{3163CB40-2AC5-4A6E-9172-F7597B01AE81}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{372CD7C2-6F69-4BD9-AF7D-FF6D950367EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.Contracts", "src\Shared\HR.Contracts\HR.Contracts.csproj", "{5C54F5E1-85E3-49B7-9CED-0D97B8B9E4F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,6 +39,22 @@ Global
 		{2030E611-D722-403C-BAB6-36A60317D408}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2030E611-D722-403C-BAB6-36A60317D408}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2030E611-D722-403C-BAB6-36A60317D408}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76BAB36F-56C4-4C80-8490-1807247647CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76BAB36F-56C4-4C80-8490-1807247647CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76BAB36F-56C4-4C80-8490-1807247647CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76BAB36F-56C4-4C80-8490-1807247647CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEACA671-009D-42C9-96B5-E657EDAA9E9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEACA671-009D-42C9-96B5-E657EDAA9E9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEACA671-009D-42C9-96B5-E657EDAA9E9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEACA671-009D-42C9-96B5-E657EDAA9E9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3163CB40-2AC5-4A6E-9172-F7597B01AE81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3163CB40-2AC5-4A6E-9172-F7597B01AE81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3163CB40-2AC5-4A6E-9172-F7597B01AE81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3163CB40-2AC5-4A6E-9172-F7597B01AE81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C54F5E1-85E3-49B7-9CED-0D97B8B9E4F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C54F5E1-85E3-49B7-9CED-0D97B8B9E4F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C54F5E1-85E3-49B7-9CED-0D97B8B9E4F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C54F5E1-85E3-49B7-9CED-0D97B8B9E4F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,6 +62,11 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{AFC98864-5640-46A7-AE82-4DAB3295B106} = {18242CF7-0598-449E-AF0B-BED4782F3AEB}
 		{2030E611-D722-403C-BAB6-36A60317D408} = {AFC98864-5640-46A7-AE82-4DAB3295B106}
+		{76BAB36F-56C4-4C80-8490-1807247647CD} = {AFC98864-5640-46A7-AE82-4DAB3295B106}
+		{CEACA671-009D-42C9-96B5-E657EDAA9E9A} = {AFC98864-5640-46A7-AE82-4DAB3295B106}
+		{3163CB40-2AC5-4A6E-9172-F7597B01AE81} = {AFC98864-5640-46A7-AE82-4DAB3295B106}
+		{372CD7C2-6F69-4BD9-AF7D-FF6D950367EC} = {18242CF7-0598-449E-AF0B-BED4782F3AEB}
+		{5C54F5E1-85E3-49B7-9CED-0D97B8B9E4F6} = {372CD7C2-6F69-4BD9-AF7D-FF6D950367EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7DD3FDBA-7222-4B5A-B40A-F5BE0ED7E417}
