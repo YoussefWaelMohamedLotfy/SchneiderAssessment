@@ -1,4 +1,4 @@
-using HR.Blazor.WebAssembly;
+using HR.Razor.Components;
 
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
