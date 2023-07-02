@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SDKs\HR.SDK\HR.SDK.csproj" />
     <ProjectReference Include="..\..\Shared\HR.Razor.Components\HR.Razor.Components.csproj" />
   </ItemGroup>
 

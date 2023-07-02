@@ -1,0 +1,54 @@
+@page "/Employees"
+@using HR.SDK.Endpoints;
+@inject HRApiClient _hrClient
+
+<PageTitle>Employees</PageTitle>
+
+<h2>Employees Vacation Requests</h2>
+
+@if (_vacationTypes is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <EditForm Model="@_newVacationrequest" OnValidSubmit="@SubmitNewVacationRequest">
+        <ValidationSummary />
+        <div class="border p-3 mb-2">
+            <h3 class="text-info">Select Vacation Type</h3>
+            <InputSelect class="form-select" @bind-Value="_newVacationrequest.VacationTypeId">
+                <option selected disabled>Select Vacation Type...</option>
+
+                @foreach (var item in _vacationTypes)
+                {
+                    <option value="@item.ID">@item.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="border p-3 mb-2">
+            <h3 class="text-info">Create Request Details</h3>
+            <div class="row g-1">
+                <div class="col-sm">
+                    <label>
+                        Start Date:
+                        <InputDate @bind-Value="_newVacationrequest.StartDate"/>
+                    </label>
+                </div>
+                <div class="col-sm">
+                    <label>
+                        End Date:
+                        <InputDate @bind-Value="_newVacationrequest.EndDate" />
+                    </label>
+                </div>
+                <div class="col-sm">
+                    <label>
+                        Employee ID:
+                        <InputText @bind-Value="_newVacationrequest.RequestingEmployeeId" />
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </EditForm>
+
+}

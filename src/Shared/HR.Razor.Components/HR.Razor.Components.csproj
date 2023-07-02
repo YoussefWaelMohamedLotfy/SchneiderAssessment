@@ -15,4 +15,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\SDKs\HR.SDK\HR.SDK.csproj" />
+    <ProjectReference Include="..\HR.Contracts\HR.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

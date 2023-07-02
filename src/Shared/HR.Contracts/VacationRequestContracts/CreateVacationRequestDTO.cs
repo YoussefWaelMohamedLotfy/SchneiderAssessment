@@ -2,7 +2,7 @@
 
 public class CreateVacationRequestDTO
 {
-    public Guid RequestingEmployeeId { get; set; }
+    public string RequestingEmployeeId { get; set; } = default!;
 
     public int VacationTypeId { get; set; }
 
