@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  hr-api:
+    container_name: HR-Backend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - 7000:443
+      - 7001:80
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  hr-app:
+    container_name: HR-Frontend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - 7002:443
+      - 7003:80
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
