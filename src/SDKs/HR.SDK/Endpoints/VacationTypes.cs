@@ -10,12 +10,8 @@ public sealed class VacationTypes
     private readonly IVacationTypesClient _client;
 
     public VacationTypes(IVacationTypesClient client)
-    {
-        _client = client;
-    }
+        => _client = client;
 
     public async Task<IApiResponse<List<GetVacationTypeDTO>>> GetAllVacationTypesAsync()
-    {
-        return await _client.GetAllVacationTypes();
-    }
+        => await _client.GetAllVacationTypes();
 }

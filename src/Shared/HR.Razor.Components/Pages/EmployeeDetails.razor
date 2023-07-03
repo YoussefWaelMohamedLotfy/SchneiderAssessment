@@ -1,0 +1,74 @@
+@page "/Employees/{EmployeeId:guid}"
+@using HR.Contracts.EmployeeContracts;
+@using HR.SDK.Endpoints;
+@inject HRApiClient _hrClient
+
+<h3>Employee Details</h3>
+
+@if (_vacationTypes is null || _employee is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <EditForm Model="@_newVacationrequest" OnValidSubmit="@SubmitNewVacationRequest">
+        <ValidationSummary />
+        <div class="border p-3 mb-2">
+            <h3 class="text-primary">Select Vacation Type</h3>
+            <InputSelect class="form-select w-25" @bind-Value="_newVacationrequest.VacationTypeId">
+                <option selected disabled>Select Vacation Type...</option>
+
+                @foreach (var item in _vacationTypes)
+                {
+                    <option value="@item.ID">@item.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="border p-3 mb-2">
+            <h3 class="text-primary">Create Request Details</h3>
+            <div class="row g-1">
+                <div class="col-sm">
+                    <label>
+                        Start Date:
+                        <InputDate class="form-control" @bind-Value="_newVacationrequest.StartDate" @bind-Value:after="CalculateDaysToBeDeducted" />
+                    </label>
+                </div>
+                <div class="col-sm">
+                    <label>
+                        End Date:
+                        <InputDate class="form-control" @bind-Value="_newVacationrequest.EndDate" @bind-Value:after="CalculateDaysToBeDeducted" />
+                    </label>
+                </div>
+                <div class="col-sm">
+                    <label>
+                        Days:
+                        <InputText class="form-control" disabled @bind-Value="@DaysToBeDeducted" />
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary my-2">Submit</button>
+        </div>
+    </EditForm>
+
+    <div class="border p-3 mb-2">
+        <h3 class="text-primary">Vacation Balance</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Annual</td>
+                    <td>@_employee.AnnualVacationRemaining</td>
+                </tr>
+                <tr>
+                    <td>Sick</td>
+                    <td>@_employee.SickVacationRemaining</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}

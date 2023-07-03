@@ -1,0 +1,41 @@
+@page "/Employees"
+@using HR.SDK.Endpoints;
+@inject HRApiClient _hrClient
+
+<PageTitle>Employees</PageTitle>
+
+<h2>Employees List</h2>
+
+@if (_employees is null)
+{
+    <p>Loading Employees...</p>
+}
+else
+{
+    <div class="border p-3">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in _employees)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.Name</td>
+                        <td>
+                            <a href="@($"/Employees/{item.ID}")" class="btn btn-secondary">
+                                <i class="oi oi-list"></i>
+                                View Details
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

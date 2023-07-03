@@ -18,6 +18,10 @@ public sealed class CreateVacationRequestCommandValidator : AbstractValidator<Cr
 {
     public CreateVacationRequestCommandValidator()
     {
+        RuleFor(x => x.VacationRequestInput.RequestingEmployeeId)
+            .Must(x => Guid.TryParse(x, out _))
+            .WithMessage("RequestingEmployeeId must be parsed to Guid");
+
         RuleFor(x => x.VacationRequestInput.VacationTypeId)
             .GreaterThan(0)
             .WithMessage("VacationTypeId must be greater than 0");
@@ -43,7 +47,7 @@ internal sealed class CreateVacationRequestCommandHandler : IRequestHandler<Crea
 
     public async Task<GetVacationRequestDTO?> Handle(CreateVacationRequestCommand request, CancellationToken cancellationToken)
     {
-        var employee = await _context.Employees.FindAsync(new object[] { request.VacationRequestInput.RequestingEmployeeId }, cancellationToken);
+        var employee = await _context.Employees.FindAsync(new object[] { Guid.Parse(request.VacationRequestInput.RequestingEmployeeId) }, cancellationToken);
         var vacationType = await _context.VacationTypes.AsNoTracking()
             .FirstOrDefaultAsync(x => x.ID == request.VacationRequestInput.VacationTypeId, cancellationToken);
 
@@ -69,7 +73,7 @@ internal sealed class CreateVacationRequestCommandHandler : IRequestHandler<Crea
             StartDate = request.VacationRequestInput.StartDate,
             EndDate = request.VacationRequestInput.EndDate,
             VacationTypeId = request.VacationRequestInput.VacationTypeId,
-            RequestingEmployeeId = request.VacationRequestInput.RequestingEmployeeId
+            RequestingEmployeeId = Guid.Parse(request.VacationRequestInput.RequestingEmployeeId)
         };
 
         await _context.VacationRequests.AddAsync(newRequest, cancellationToken);

@@ -18,6 +18,15 @@ public sealed class EmployeesController : ControllerBase
     }
 
     /// <summary>
+    /// Gets all Employees from Data store
+    /// </summary>
+    /// <param name="ct"></param>
+    /// <returns></returns>
+    [HttpGet]
+    public async Task<IActionResult> GetAllEmployees(CancellationToken ct)
+        => Ok(await _mediator.Send(new GetAllEmployeesQuery(), ct));
+
+    /// <summary>
     /// Gets a single Employee by ID
     /// </summary>
     /// <param name="id"></param>
