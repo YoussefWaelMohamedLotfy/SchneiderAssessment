@@ -14,8 +14,8 @@ else
     <EditForm Model="@_newVacationrequest" OnValidSubmit="@SubmitNewVacationRequest">
         <ValidationSummary />
         <div class="border p-3 mb-2">
-            <h3 class="text-info">Select Vacation Type</h3>
-            <InputSelect class="form-select" @bind-Value="_newVacationrequest.VacationTypeId">
+            <h3 class="text-primary">Select Vacation Type</h3>
+            <InputSelect class="form-select w-25" @bind-Value="_newVacationrequest.VacationTypeId">
                 <option selected disabled>Select Vacation Type...</option>
 
                 @foreach (var item in _vacationTypes)
@@ -25,7 +25,7 @@ else
             </InputSelect>
         </div>
         <div class="border p-3 mb-2">
-            <h3 class="text-info">Create Request Details</h3>
+            <h3 class="text-primary">Create Request Details</h3>
             <div class="row g-1">
                 <div class="col-sm">
                     <label>
@@ -46,12 +46,12 @@ else
                     </label>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success my-2">Submit</button>
+            <button type="submit" class="btn btn-primary my-2">Submit</button>
         </div>
     </EditForm>
 
     <div class="border p-3 mb-2">
-        <h3 class="text-info">Vacation Balance</h3>
+        <h3 class="text-primary">Vacation Balance</h3>
         <table class="table table-bordered">
             <thead>
                 <tr>

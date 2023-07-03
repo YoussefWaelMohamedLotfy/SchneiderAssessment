@@ -6,12 +6,36 @@
 
 <h2>Employees List</h2>
 
-<div class="border p-3">
-    <div class="list-group w-50">
-        <a href="/Employees/70d39037-01be-44ce-e707-08db76f78243" class="list-group-item list-group-item-action">
-            The current link item
-        </a>
-        <a href="/Employees/33d494e4-dcb9-4d5d-e706-08db76f78243" class="list-group-item list-group-item-action">A second link item</a>
-        <a href="/Employees/8f28cf3d-7b0d-4389-e705-08db76f78243" class="list-group-item list-group-item-action">A third link item</a>
+@if (_employees is null)
+{
+    <p>Loading Employees...</p>
+}
+else
+{
+    <div class="border p-3">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in _employees)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.Name</td>
+                        <td>
+                            <a href="@($"/Employees/{item.ID}")" class="btn btn-secondary">
+                                <i class="oi oi-list"></i>
+                                View Details
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-</div>
+}
