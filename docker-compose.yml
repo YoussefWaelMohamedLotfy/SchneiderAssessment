@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  backend:
+    image: ${DOCKER_REGISTRY-}hrapi
+    build:
+      context: .
+      dockerfile: src/Services/HR.API/Dockerfile
+
+  #hr-app-wasm:
+  #  image: ${DOCKER_REGISTRY-}hrblazorwebassembly
+  #  build:
+  #    context: .
+  #    dockerfile: src/Apps/HR.Blazor.WebAssembly/Dockerfile
+
+  hr-app-server:
+    image: ${DOCKER_REGISTRY-}hrblazor
+    build:
+      context: .
+      dockerfile: src/Apps/HR.Blazor/Dockerfile
+
+  postgresdb:
+    image: postgres
+
+  pgadmin4:
+    image: dpage/pgadmin4
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+
