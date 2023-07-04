@@ -1,5 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 using Polly;
 
@@ -19,7 +19,7 @@ public static class HostExtensions
             {
                 logger.LogInformation("Migrating database associated with context {DbContextName}...", typeof(TContext).Name);
 
-                var retry = Policy.Handle<SqlException>()
+                var retry = Policy.Handle<NpgsqlException>()
                         .WaitAndRetry(
                             retryCount: 5,
                             sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
