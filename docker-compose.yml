@@ -1,15 +1,21 @@
 version: '3.9'
 
 services:
-  hr-api:
+  backend:
     image: ${DOCKER_REGISTRY-}hrapi
     build:
       context: .
       dockerfile: src/Services/HR.API/Dockerfile
 
-  hr-app:
-    image: ${DOCKER_REGISTRY-}hrblazorwebassembly
+  #hr-app-wasm:
+  #  image: ${DOCKER_REGISTRY-}hrblazorwebassembly
+  #  build:
+  #    context: .
+  #    dockerfile: src/Apps/HR.Blazor.WebAssembly/Dockerfile
+
+  hr-app-server:
+    image: ${DOCKER_REGISTRY-}hrblazor
     build:
       context: .
-      dockerfile: src/Apps/HR.Blazor.WebAssembly/Dockerfile
+      dockerfile: src/Apps/HR.Blazor/Dockerfile
 

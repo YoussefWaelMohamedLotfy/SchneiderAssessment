@@ -3,7 +3,7 @@ using HR.SDK;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddHRApiClients(o => o.BaseUrl = "https://hr-backend:7245/api");
+builder.Services.AddHRApiClients(o => o.BaseUrl = "http://backend/api");
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
