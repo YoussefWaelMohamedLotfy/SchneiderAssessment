@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SDKs\HR.SDK\HR.SDK.csproj" />
+    <ProjectReference Include="..\..\Shared\HR.Razor.Components\HR.Razor.Components.csproj" />
+  </ItemGroup>
+
+</Project>
