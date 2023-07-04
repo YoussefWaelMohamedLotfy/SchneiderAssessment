@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -15,10 +16,10 @@ namespace HR.Persistence.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AnnualVacationRemaining = table.Column<int>(type: "int", nullable: false),
-                    SickVacationRemaining = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    AnnualVacationRemaining = table.Column<int>(type: "integer", nullable: false, defaultValue: 11),
+                    SickVacationRemaining = table.Column<int>(type: "integer", nullable: false, defaultValue: 10)
                 },
                 constraints: table =>
                 {
@@ -29,9 +30,9 @@ namespace HR.Persistence.Migrations
                 name: "VacationTypes",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ID = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,11 +43,11 @@ namespace HR.Persistence.Migrations
                 name: "VacationRequests",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    StartDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    EndDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    RequestingEmployeeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    VacationTypeId = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<Guid>(type: "uuid", nullable: false),
+                    StartDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    EndDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
+                    RequestingEmployeeId = table.Column<Guid>(type: "uuid", nullable: false),
+                    VacationTypeId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

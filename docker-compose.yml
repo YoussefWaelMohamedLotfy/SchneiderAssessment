@@ -19,3 +19,13 @@ services:
       context: .
       dockerfile: src/Apps/HR.Blazor/Dockerfile
 
+  postgresdb:
+    image: postgres
+
+  pgadmin4:
+    image: dpage/pgadmin4
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+
