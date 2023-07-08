@@ -60,4 +60,25 @@ services:
     ports:
       - 5050:80
     volumes:
-      - pgadmin_data:/root/.pgadmin 
+      - pgadmin_data:/root/.pgadmin
+
+  keycloak:
+    container_name: KeyCloak
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgresdb
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_HOSTNAME=localhost
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://postgresdb:5432/keycloak
+      - KC_DB_PORT=5432
+      - KC_DB_DATABASE=keycloak
+      - KC_DB_USERNAME=admin
+      - KC_DB_PASSWORD=admin1234
+      - TZ=Africa/Cairo
+      - KEYCLOAK_LOGLEVEL=DEBUG
+      - ROOT_LOGLEVEL=DEBUG
+    command: start-dev 
